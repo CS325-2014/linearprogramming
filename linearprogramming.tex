@@ -154,6 +154,72 @@ $$
 \Phi \geq - ax_n - by_n + c
 $$
 
+Also, to account for the $a = b = c = 0$ case, we have to run this LP twice, once with a constraint that $a = 1$ and once with a constraint that $b = 1$. The one with a lower $\Phi$ value is the better solution.
+
+\subsection*{Specific Problem}
+
+The best solution for:
+
+$$
+(1,3), (2,5), (3,7), (5,11), (7,14), (8,15), (10,19)
+$$
+
+is approximately:
+
+$$
+x - 0.571429y = -0.857143
+$$
+
+\newpage
+
+Here is a graph of the solution:
+
+\includegraphics[width=350pt]{graph.png}
+
+\subsection*{LP Environment}
+
+For this problem, we used AMPL, which allows defining the LP in more abstract terms as opposed to just using a matrix. The code below can be executed on http://ampl.com/cgi-bin/ampl/amplcgi. Output 3 from APL should be set to:
+
+\begin{verbatim}
+solve;
+display _varname, _var
+\end{verbatim}
+
+\subsection*{Code}
+
+\begin{verbatim}
+set Points;
+param x{Points};
+param y{Points};
+
+var a;
+var b;
+var c;
+var z{Points};
+
+minimize obj: sum{i in Points} z[i];
+
+s.t. c1{i in Points}: z[i] >= a*x[i] + b*y[i] - c;
+
+s.t. c2{i in Points}: z[i] >= -1*a*x[i] - b*y[i] + c;
+
+s.t. c3{i in Points}: a = 1; # switch to b = 1 for second run
+
+data;
+
+set Points := 1 2 3 4 5 6 7;
+
+param:	x	y   :=
+1	1	3
+2	2	5
+3	3	7
+4	5	11
+5	7	14
+6	8	15
+7	10	19;
+\end{verbatim}
+
 \end{document}
+
 
 
