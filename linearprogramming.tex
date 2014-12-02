@@ -1,0 +1,112 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{anysize}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{comment}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{algpseudocode}
+
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{1em}
+
+\newcommand{\contradiction}{%
+\begin{tikzpicture}[rotate=45,x=0.5ex,y=0.5ex]
+\draw[line width=.2ex] (0,2) -- (3,2) (0,1) -- (3,1) (1,3) -- (1,0) (2,3) -- (2,0);
+\end{tikzpicture}
+}
+
+\marginsize{2cm}{2cm}{1cm}{1cm}
+
+\begin{document}
+
+\begin{titlepage}
+    \vspace*{4cm}
+    {\huge \center
+        CS 325 Project 4 Report\\[1cm]
+    }
+    \center
+    {\large
+        Group 3
+
+        Date: \today
+
+    \textbf{Contributors:}
+    Cezary Wojcik,
+    Sean McGlothlin,
+    Matthew Eilertson
+    }
+
+\end{titlepage}
+
+\section*{Problem 1}
+
+\subsection*{Linear Program - Mathematical}
+
+\textbf{Objective:}
+
+\begin{eqnarray}
+\max \{ 4 \times \mbox{Edameme}_{\mbox{plain}} + 12 \times \mbox{Edameme}_{\mbox{regular}} + 7 \times \mbox{Edameme}_{\mbox{overtime}} \nonumber \\
+ + 8 \times \mbox{Tofu}_{\mbox{plain}} + 14 \times \mbox{Tofu}_{\mbox{regular}} + 11 \times \mbox{Tofu}_{\mbox{overtime}} \nonumber \\
+ + 4 \times \mbox{Tempeh}_{\mbox{plain}} + 13 \times \mbox{Tempeh}_{\mbox{regular}} + 9 \times \mbox{Tempeh}_{\mbox{overtime}}  \} 
+\end{eqnarray}
+
+Constraints:
+
+$$
+\mbox{Edameme}_{\mbox{plain}} + \mbox{Edameme}_{\mbox{regular}} + \mbox{Edameme}_{\mbox{overtime}} \leq 400
+$$
+$$
+\mbox{Tofu}_{\mbox{plain}} + \mbox{Tofu}_{\mbox{regular}} + \mbox{Tofu}_{\mbox{overtime}} \leq 480
+$$
+$$
+\mbox{Tempeh}_{\mbox{plain}} + \mbox{Tempeh}_{\mbox{regular}} + \mbox{Tempeh}_{\mbox{overtime}} \leq 230
+$$
+$$
+\mbox{Edameme}_{\mbox{regular}} + \mbox{Tofu}_{\mbox{regular}} + \mbox{Tempeh}_{\mbox{regular}} \leq 420
+$$
+$$
+\mbox{Edameme}_{\mbox{overtime}} + \mbox{Tofu}_{\mbox{overtime}} + \mbox{Tempeh}_{\mbox{overtime}} \leq 250
+$$
+
+\subsection*{Linear Program - Matrix}
+
+\textbf{Objective:}
+
+\[ \left( \begin{array}{ccccccccc}
+4 & 12 & 7 & 8 & 14 & 11 & 4 & 13 & 9 \end{array} \right)\]
+
+\textbf{Constraints:}
+
+\[ \left( \begin{array}{ccccccccc}
+1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 1 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 \\
+0 & 1 & 0 & 0 & 1 & 0 & 0 & 1 & 0 \\
+0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 1 \\
+\end{array} \right)
+\leq
+ \left( \begin{array}{c}
+400 \\
+480 \\
+230 \\
+420 \\
+250 \\
+\end{array} \right) \]
+
+\section*{Problem 2}
+
+\subsection*{Linear Program - Mathematical}
+
+\textbf{Objective:}
+
+
+$$
+\min \left \{ |ax_k+bx_k + c| \right \}
+$$
+
+\textbf{Constraints:}
+
+\end{document}
+
