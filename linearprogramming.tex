@@ -95,6 +95,33 @@ $$
 250 \\
 \end{array} \right) \]
 
+\subsection*{Optimal Solution}
+
+400 bags of edamame flavored on regular time, 440 blocks of plain tofu, 40 blocks of tofu flavored on overtime, 20 blocks of tempeh flavored on regular time, and 210 blocks of tempeh flavored on overtime.
+
+Total profit: \$10,910.
+
+\subsection*{LP Environment}
+
+To solve the LP problem, we used Python and a package named "PyLPSolve," which is an object oriented wrapper for the open source Python LP solver "lpsolve."
+
+\subsection*{Code}
+
+\begin{verbatim}
+from pylpsolve import LP
+lp = LP()
+lp.setObjective([4, 12, 7, 8, 14, 11, 4, 13, 9], mode="maximize")
+lp.addConstraint([[1, 1, 1, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 1, 1, 1, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 1, 1, 1],
+  [0, 1, 0, 0, 1, 0, 0, 1, 0],
+  [0, 0, 1, 0, 0, 1, 0, 0, 1]],
+  "<=",
+  [400, 480, 230, 420, 250])
+lp.solve()
+print lp.getSolution()
+\end{verbatim}
+
 \section*{Problem 2}
 
 \subsection*{Linear Program - Mathematical}
