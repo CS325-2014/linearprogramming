@@ -122,18 +122,38 @@ lp.solve()
 print lp.getSolution()
 \end{verbatim}
 
+\newpage
+
 \section*{Problem 2}
 
 \subsection*{Linear Program - Mathematical}
 
+We want to minimize $\Phi$ subject to $\Phi = \max_{1 \leq i \leq n}{\left \{ ax_i + by_i - c \right \}}$.
+
 \textbf{Objective:}
 
-
 $$
-\min \left \{ |ax_k+bx_k + c| \right \}
+\min \left \{ \Phi \right \}
 $$
 
 \textbf{Constraints:}
 
+$$
+\Phi \geq ax_0 + by_0 - c
+$$
+$$
+\Phi \geq - ax_0 - by_0 + c
+$$
+$$
+...
+$$
+$$
+\Phi \geq ax_n + by_n - c
+$$
+$$
+\Phi \geq - ax_n - by_n + c
+$$
+
 \end{document}
+
 
